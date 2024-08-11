@@ -1,21 +1,6 @@
-/*
- * Copyright 2024 VLCHEONG
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+package com.einvoice.data;
 
-package com.einvoice.sign;
-
+import org.junit.jupiter.api.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.traversal.DocumentTraversal;
@@ -45,9 +30,25 @@ import java.security.InvalidAlgorithmParameterException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Iterator;
 
-interface XML {
+public class CanonicalizationTest {
 
-    String XSLT = """
+    private static final String XML = """
+            <?xml version="1.0" encoding="UTF-8"?>
+            <PurchaseOrder xmlns:a="http://www.ietf.org" xmlns="http://www.example.com">
+                <foo Id="1">bar &amp; beer</foo>
+                <a:name/>
+                <compute><![CDATA[value>"0" && value<"10" ?"valid":"error"]]></compute>
+            </PurchaseOrder>
+        """.trim();
+
+    @Test
+    public void run() throws Exception {
+        String minified = minify(XML);
+        System.out.println(minified);
+        transform(minified);
+    }
+
+    private static final String XSLT = """
             <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
                 <xsl:output indent="no"/>
                 <xsl:strip-space elements="*"/>
@@ -59,7 +60,7 @@ interface XML {
             </xsl:stylesheet>
         """;
 
-    static String minify(String xml) throws TransformerException {
+    private String minify(String xml) throws TransformerException {
         Source xsltSource = new StreamSource(new StringReader(XSLT));
         TransformerFactory factory = TransformerFactory.newInstance();
         Transformer transformer = factory.newTransformer(xsltSource);
@@ -70,19 +71,7 @@ interface XML {
         return writer.toString();
     }
 
-    static String canonicalize(String xml, String algorithm) throws
-        ParserConfigurationException, IOException, SAXException,
-        InvalidAlgorithmParameterException, NoSuchAlgorithmException,
-        TransformException {
-        Document doc = toDocument(xml);
-        Data data = new NodeSetDataImpl(doc, node -> NodeFilter.FILTER_ACCEPT);
-        XMLSignatureFactory signatureFactory = XMLSignatureFactory.getInstance("DOM");
-        CanonicalizationMethod canonicalizationMethod = signatureFactory.newCanonicalizationMethod(algorithm, (C14NMethodParameterSpec) null);
-        OctetStreamData streamData = (OctetStreamData) canonicalizationMethod.transform(data, null);
-        return new String(streamData.getOctetStream().readAllBytes(), StandardCharsets.UTF_8);
-    }
-
-    static Document toDocument(String xml) throws ParserConfigurationException, IOException, SAXException {
+    private Document toDocument(String xml) throws ParserConfigurationException, IOException, SAXException {
         byte[] bytes = xml.getBytes(StandardCharsets.UTF_8);
         try (ByteArrayInputStream input = new ByteArrayInputStream(bytes)) {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -92,7 +81,23 @@ interface XML {
         }
     }
 
-    final class NodeSetDataImpl implements NodeSetData<Node>, Iterator<Node> {
+    private void transform(String xml) throws
+        ParserConfigurationException, IOException, SAXException,
+        InvalidAlgorithmParameterException, NoSuchAlgorithmException,
+        TransformException {
+        Document doc = toDocument(xml);
+        Data data = new NodeSetDataImpl(doc, NodeSetDataImpl.getRootNodeFilter());
+
+        XMLSignatureFactory signatureFactory = XMLSignatureFactory.getInstance("DOM");
+        CanonicalizationMethod canonicalizationMethod = signatureFactory.newCanonicalizationMethod(CanonicalizationMethod.INCLUSIVE_11, (C14NMethodParameterSpec) null);
+        OctetStreamData streamData = (OctetStreamData) canonicalizationMethod.transform(data, null);
+        System.out.println("mimeType: " + streamData.getMimeType());
+        System.out.println("URI: " + streamData.getURI());
+        String result = new String(streamData.getOctetStream().readAllBytes(), StandardCharsets.UTF_8);
+        System.out.println(result);
+    }
+
+    static final class NodeSetDataImpl implements NodeSetData<Node>, Iterator<Node> {
 
         private Node ivNode;
 
@@ -134,12 +139,12 @@ interface XML {
 
         @Override
         public Node next() {
-            return nextNode();
+            return consumeNextNode();
         }
 
         @Override
         public void remove() {
-            throw new UnsupportedOperationException("Remove node is unsupported.");
+            throw new UnsupportedOperationException("Removing nodes is not supported.");
         }
 
         private Node checkNextNode() {
@@ -153,10 +158,19 @@ interface XML {
             return ivNextNode;
         }
 
-        private Node nextNode() {
+        private Node consumeNextNode() {
             Node nextNode = checkNextNode();
             ivNextNode = null;
             return nextNode;
+        }
+
+        static NodeFilter getRootNodeFilter() {
+            return pNode -> {
+                /*if (pNode != null && pNode.getParentNode() instanceof Document) {
+                    return NodeFilter.FILTER_SKIP;
+                }*/
+                return NodeFilter.FILTER_ACCEPT;
+            };
         }
     }
 }
