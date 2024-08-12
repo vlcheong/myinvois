@@ -1,0 +1,265 @@
+<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+    <cbc:ID>INV12345</cbc:ID>
+    <cbc:IssueDate>2024-08-10</cbc:IssueDate>
+    <cbc:IssueTime>11:35:13Z</cbc:IssueTime>
+    <cbc:InvoiceTypeCode listVersionID="1.1">04</cbc:InvoiceTypeCode>
+    <cbc:DocumentCurrencyCode>MYR</cbc:DocumentCurrencyCode>
+    <cbc:TaxCurrencyCode>MYR</cbc:TaxCurrencyCode>
+    <cac:InvoicePeriod>
+        <cbc:StartDate>2024-08-01</cbc:StartDate>
+        <cbc:EndDate>00:00:00</cbc:EndDate>
+        <cbc:Description>Monthly</cbc:Description>
+    </cac:InvoicePeriod>
+    <cac:BillingReference>
+        <cac:AdditionalDocumentReference>
+            <cbc:ID>L1</cbc:ID>
+        </cac:AdditionalDocumentReference>
+    </cac:BillingReference>
+    <cac:BillingReference>
+        <cac:InvoiceDocumentReference>
+            <cbc:ID>NA</cbc:ID>
+            <cbc:UUID>NA</cbc:UUID>
+        </cac:InvoiceDocumentReference>
+    </cac:BillingReference>
+    <cac:BillingReference>
+        <cac:InvoiceDocumentReference>
+            <cbc:ID>INV54321</cbc:ID>
+            <cbc:UUID>F9D425P6DS7D8IU</cbc:UUID>
+        </cac:InvoiceDocumentReference>
+    </cac:BillingReference>
+    <cac:AccountingSupplierParty>
+        <cac:Party>
+            <cbc:IndustryClassificationCode name="Wholesale of computer hardware, software and peripherals">46510</cbc:IndustryClassificationCode>
+            <cac:PartyIdentification>
+                <cbc:ID schemeID="TIN">C29823658030</cbc:ID>
+            </cac:PartyIdentification>
+            <cac:PartyIdentification>
+                <cbc:ID schemeID="BRN">202201020832</cbc:ID>
+            </cac:PartyIdentification>
+            <cac:PostalAddress>
+                <cbc:CityName>Cyberjaya</cbc:CityName>
+                <cbc:PostalZone>63000</cbc:PostalZone>
+                <cbc:CountrySubentityCode>14</cbc:CountrySubentityCode>
+                <cac:AddressLine>
+                    <cbc:Line>Persiaran Rimba Permai</cbc:Line>
+                </cac:AddressLine>
+                <cac:AddressLine>
+                    <cbc:Line>Cyber 8,</cbc:Line>
+                </cac:AddressLine>
+                <cac:AddressLine>
+                    <cbc:Line>63000 Cyberjaya</cbc:Line>
+                </cac:AddressLine>
+                <cac:Country>
+                    <cbc:IdentificationCode listAgencyID="6" listID="ISO3166-1">MYS</cbc:IdentificationCode>
+                </cac:Country>
+            </cac:PostalAddress>
+            <cac:PartyLegalEntity>
+                <cbc:RegistrationName>AMS Setia Jaya Sdn. Bhd.</cbc:RegistrationName>
+            </cac:PartyLegalEntity>
+            <cac:Contact>
+                <cbc:Telephone>+969876543210</cbc:Telephone>
+                <cbc:ElectronicMail>ali@ams.com</cbc:ElectronicMail>
+            </cac:Contact>
+        </cac:Party>
+    </cac:AccountingSupplierParty>
+    <cac:AccountingCustomerParty>
+        <cac:Party>
+            <cac:PartyIdentification>
+                <cbc:ID schemeID="TIN">C29967772090</cbc:ID>
+            </cac:PartyIdentification>
+            <cac:PartyIdentification>
+                <cbc:ID schemeID="BRN">202201043174</cbc:ID>
+            </cac:PartyIdentification>
+            <cac:PartyIdentification>
+                <cbc:ID schemeID="SST">NA</cbc:ID>
+            </cac:PartyIdentification>
+            <cac:PostalAddress>
+                <cbc:CityName>Kuala Lumpur</cbc:CityName>
+                <cbc:PostalZone>50200</cbc:PostalZone>
+                <cbc:CountrySubentityCode>14</cbc:CountrySubentityCode>
+                <cac:AddressLine>
+                    <cbc:Line>Lot 5 08</cbc:Line>
+                </cac:AddressLine>
+                <cac:AddressLine>
+                    <cbc:Line>5th Floor</cbc:Line>
+                </cac:AddressLine>
+                <cac:AddressLine>
+                    <cbc:Line>Wisma Cosway Jalan Raja Chulan</cbc:Line>
+                </cac:AddressLine>
+                <cac:Country>
+                    <cbc:IdentificationCode listAgencyID="6" listID="ISO3166-1">MYS</cbc:IdentificationCode>
+                </cac:Country>
+            </cac:PostalAddress>
+            <cac:PartyLegalEntity>
+                <cbc:RegistrationName>Chuan Sin Sdn. Bhd.</cbc:RegistrationName>
+            </cac:PartyLegalEntity>
+            <cac:Contact>
+                <cbc:Telephone>+969876543210</cbc:Telephone>
+                <cbc:ElectronicMail>chuan.sin@test.com</cbc:ElectronicMail>
+            </cac:Contact>
+        </cac:Party>
+    </cac:AccountingCustomerParty>
+    <cac:PaymentMeans>
+        <cbc:PaymentMeansCode>01</cbc:PaymentMeansCode>
+        <cac:PayeeFinancialAccount>
+            <cbc:ID>L1</cbc:ID>
+        </cac:PayeeFinancialAccount>
+    </cac:PaymentMeans>
+    <cac:PaymentTerms>
+        <cbc:Note>Cash</cbc:Note>
+    </cac:PaymentTerms>
+    <cac:PrepaidPayment>
+        <cbc:ID>L1</cbc:ID>
+        <cbc:PaidAmount currencyID="MYR">1.0</cbc:PaidAmount>
+        <cbc:PaidDate>2024-08-01</cbc:PaidDate>
+        <cbc:PaidTime>12:00:00</cbc:PaidTime>
+    </cac:PrepaidPayment>
+    <cac:Delivery>
+        <cac:DeliveryParty>
+            <cac:PostalAddress>
+                <cbc:CityName></cbc:CityName>
+                <cbc:PostalZone></cbc:PostalZone>
+                <cbc:CountrySubentityCode></cbc:CountrySubentityCode>
+                <cac:AddressLine>
+                    <cbc:Line></cbc:Line>
+                </cac:AddressLine>
+                <cac:Country>
+                    <cbc:IdentificationCode listAgencyID="6" listID="ISO3166-1" />
+                </cac:Country>
+            </cac:PostalAddress>
+            <cac:PartyLegalEntity>
+                <cbc:RegistrationName></cbc:RegistrationName>
+            </cac:PartyLegalEntity>
+        </cac:DeliveryParty>
+    </cac:Delivery>
+    <cac:TaxExchangeRate>
+        <cbc:SourceCurrencyCode>MYR</cbc:SourceCurrencyCode>
+        <cbc:TargetCurrencyCode>MYR</cbc:TargetCurrencyCode>
+        <cbc:CalculationRate>1.0</cbc:CalculationRate>
+    </cac:TaxExchangeRate>
+    <cac:TaxTotal>
+        <cbc:TaxAmount currencyID="MYR">0.0</cbc:TaxAmount>
+        <cac:TaxSubtotal>
+            <cbc:TaxableAmount currencyID="MYR">0.0</cbc:TaxableAmount>
+            <cbc:TaxAmount currencyID="MYR">0.0</cbc:TaxAmount>
+            <cac:TaxCategory>
+                <cbc:ID>06</cbc:ID>
+                <cbc:Percent>0.0</cbc:Percent>
+                <cac:TaxScheme>
+                    <cbc:ID schemeAgencyID="6" schemeID="UN/ECE 5153">OTH</cbc:ID>
+                </cac:TaxScheme>
+            </cac:TaxCategory>
+        </cac:TaxSubtotal>
+    </cac:TaxTotal>
+    <cac:LegalMonetaryTotal>
+        <cbc:LineExtensionAmount currencyID="MYR">1570.38</cbc:LineExtensionAmount>
+        <cbc:TaxExclusiveAmount currencyID="MYR">1570.38</cbc:TaxExclusiveAmount>
+        <cbc:TaxInclusiveAmount currencyID="MYR">1570.38</cbc:TaxInclusiveAmount>
+        <cbc:AllowanceTotalAmount currencyID="MYR">0.0</cbc:AllowanceTotalAmount>
+        <cbc:ChargeTotalAmount currencyID="MYR">0.0</cbc:ChargeTotalAmount>
+        <cbc:PayableRoundingAmount currencyID="MYR">0.3</cbc:PayableRoundingAmount>
+        <cbc:PayableAmount currencyID="MYR">1570.38</cbc:PayableAmount>
+    </cac:LegalMonetaryTotal>
+    <cac:InvoiceLine>
+        <cbc:ID></cbc:ID>
+        <cbc:InvoicedQuantity unitCode="NA">1.0</cbc:InvoicedQuantity>
+        <cbc:LineExtensionAmount currencyID="MYR">454.0</cbc:LineExtensionAmount>
+        <cac:TaxTotal>
+            <cbc:TaxAmount currencyID="MYR">0.0</cbc:TaxAmount>
+            <cac:TaxSubtotal>
+                <cbc:TaxableAmount currencyID="MYR">0.0</cbc:TaxableAmount>
+                <cbc:TaxAmount currencyID="MYR">0.0</cbc:TaxAmount>
+                <cac:TaxCategory>
+                    <cbc:ID>06</cbc:ID>
+                    <cbc:Percent>0.0</cbc:Percent>
+                    <cac:TaxScheme>
+                        <cbc:ID schemeAgencyID="6" schemeID="UN/ECE 5153">OTH</cbc:ID>
+                    </cac:TaxScheme>
+                </cac:TaxCategory>
+            </cac:TaxSubtotal>
+        </cac:TaxTotal>
+        <cac:Item>
+            <cbc:Description>Laptop Peripherals</cbc:Description>
+            <cac:OriginCountry>
+                <cbc:IdentificationCode></cbc:IdentificationCode>
+            </cac:OriginCountry>
+            <cac:CommodityClassification>
+                <cbc:ItemClassificationCode listID="CLASS">004</cbc:ItemClassificationCode>
+            </cac:CommodityClassification>
+        </cac:Item>
+        <cac:Price>
+            <cbc:PriceAmount currencyID="MYR">454.0</cbc:PriceAmount>
+        </cac:Price>
+        <cac:ItemPriceExtension>
+            <cbc:Amount currencyID="MYR">0.0</cbc:Amount>
+        </cac:ItemPriceExtension>
+    </cac:InvoiceLine>
+    <cac:InvoiceLine>
+        <cbc:ID></cbc:ID>
+        <cbc:InvoicedQuantity unitCode="NA">1.0</cbc:InvoicedQuantity>
+        <cbc:LineExtensionAmount currencyID="MYR">708.88</cbc:LineExtensionAmount>
+        <cac:TaxTotal>
+            <cbc:TaxAmount currencyID="MYR">0.0</cbc:TaxAmount>
+            <cac:TaxSubtotal>
+                <cbc:TaxableAmount currencyID="MYR">0.0</cbc:TaxableAmount>
+                <cbc:TaxAmount currencyID="MYR">0.0</cbc:TaxAmount>
+                <cac:TaxCategory>
+                    <cbc:ID>06</cbc:ID>
+                    <cbc:Percent>0.0</cbc:Percent>
+                    <cac:TaxScheme>
+                        <cbc:ID schemeAgencyID="6" schemeID="UN/ECE 5153">OTH</cbc:ID>
+                    </cac:TaxScheme>
+                </cac:TaxCategory>
+            </cac:TaxSubtotal>
+        </cac:TaxTotal>
+        <cac:Item>
+            <cbc:Description>Server Peripherals</cbc:Description>
+            <cac:OriginCountry>
+                <cbc:IdentificationCode></cbc:IdentificationCode>
+            </cac:OriginCountry>
+            <cac:CommodityClassification>
+                <cbc:ItemClassificationCode listID="CLASS">004</cbc:ItemClassificationCode>
+            </cac:CommodityClassification>
+        </cac:Item>
+        <cac:Price>
+            <cbc:PriceAmount currencyID="MYR">708.88</cbc:PriceAmount>
+        </cac:Price>
+        <cac:ItemPriceExtension>
+            <cbc:Amount currencyID="MYR">0.0</cbc:Amount>
+        </cac:ItemPriceExtension>
+    </cac:InvoiceLine>
+    <cac:InvoiceLine>
+        <cbc:ID></cbc:ID>
+        <cbc:InvoicedQuantity unitCode="NA">1.0</cbc:InvoicedQuantity>
+        <cbc:LineExtensionAmount currencyID="MYR">407.5</cbc:LineExtensionAmount>
+        <cac:TaxTotal>
+            <cbc:TaxAmount currencyID="MYR">0.0</cbc:TaxAmount>
+            <cac:TaxSubtotal>
+                <cbc:TaxableAmount currencyID="MYR">0.0</cbc:TaxableAmount>
+                <cbc:TaxAmount currencyID="MYR">0.0</cbc:TaxAmount>
+                <cac:TaxCategory>
+                    <cbc:ID>06</cbc:ID>
+                    <cbc:Percent>0.0</cbc:Percent>
+                    <cac:TaxScheme>
+                        <cbc:ID schemeAgencyID="6" schemeID="UN/ECE 5153">OTH</cbc:ID>
+                    </cac:TaxScheme>
+                </cac:TaxCategory>
+            </cac:TaxSubtotal>
+        </cac:TaxTotal>
+        <cac:Item>
+            <cbc:Description>Computer Peripherals</cbc:Description>
+            <cac:OriginCountry>
+                <cbc:IdentificationCode></cbc:IdentificationCode>
+            </cac:OriginCountry>
+            <cac:CommodityClassification>
+                <cbc:ItemClassificationCode listID="CLASS">004</cbc:ItemClassificationCode>
+            </cac:CommodityClassification>
+        </cac:Item>
+        <cac:Price>
+            <cbc:PriceAmount currencyID="MYR">407.5</cbc:PriceAmount>
+        </cac:Price>
+        <cac:ItemPriceExtension>
+            <cbc:Amount currencyID="MYR">0.0</cbc:Amount>
+        </cac:ItemPriceExtension>
+    </cac:InvoiceLine>
+</Invoice>
